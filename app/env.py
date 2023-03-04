@@ -3,8 +3,13 @@ import os
 from typing import List, TypeVar, Optional, Type
 from ast import literal_eval
 load_dotenv(verbose=True)
-def get_env(key):
+def get_env(key,default=None):
     val = os.getenv(key)
-    return val
+    if val is None:
+        if default is not None:
+            return default
+    else:
+        return val
+
 
 ALGORITHM = get_env("ALGORITHM")
