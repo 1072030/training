@@ -13,3 +13,5 @@ def get_env(key,default=None):
 
 
 ALGORITHM = get_env("ALGORITHM")
+
+JWT_SECRET = get_env("JWT_SECRET", str)

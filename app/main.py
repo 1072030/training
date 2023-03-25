@@ -4,7 +4,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 # from app.core import conn
 from app.route import (
-    health
+    health,
+    auth
 )
 app = FastAPI(title="Foxlink API Backend", version="0.0.1")
 origins = [
@@ -24,6 +25,7 @@ logger = logging.getLogger("uvicorn")
 logger.propagate = False
 #add router
 app.include_router(health.router)
+app.include_router(auth.router)
 
 @app.on_event("startup")
 async def startup():
